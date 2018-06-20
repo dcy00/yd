@@ -1,0 +1,13 @@
+@mixin button-default($width){
+  height: 0.6rem;
+  width: $width;
+  border-radius: 4px;
+  background-image: linear-gradient(#43ABFE 20%, #147EDB 80%);
+  line-height:0.6rem;
+  text-align: center;
+  color: #fff;
+  font-size: 0;
+}
+@mixin button-active{
+  background-image: linear-gradient(#F99A67 20%, #ED6E28 80%);
+}

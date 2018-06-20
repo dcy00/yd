@@ -1,0 +1,113 @@
+import Vue from 'vue'
+import Router from 'vue-router'
+Router.prototype.goBack = function () {
+  this.isBack = true
+  window.history.go(-1)
+}
+Vue.use(Router);
+// 首页
+const Home = (resolve) => {
+  import('@/components/home').then((module) => {
+    resolve(module);
+  })
+};
+// 商品列表
+const Goods = (resolve) => {
+  import('@/components/goods').then((module) => {
+    resolve(module);
+  })
+};
+// 搜索结果页
+const searchList = (resolve) => {
+  import('@/components/search-list').then((module) => {
+    resolve(module);
+  })
+};
+//商品详情页
+const goodsDetail = (resolve) => {
+  import('@/components/goods-detail').then((module) => {
+    resolve(module);
+  })
+};
+//全球购
+const world = (resolve) => {
+  import('@/components/world').then((module) => {
+    resolve(module);
+  })
+};
+//vip
+const vip = (resolve) => {
+  import('@/components/vip').then((module) => {
+    resolve(module);
+  })
+};
+//老人
+const old = (resolve) => {
+  import('@/components/old').then((module) => {
+    resolve(module);
+  })
+};
+//house
+const house = (resolve) => {
+  import('@/components/house').then((module) => {
+    resolve(module);
+  })
+};
+//搜索页
+const search = () => import('@/components/search');
+//限时秒杀页
+const indulgence = () => import('@/components/indulgence');
+export default new Router({
+  scrollBehavior(to,from,savePosition){
+    //to：记录目标 点击浏览器前进后退或者切换导航触发
+    //from:记录来源 点击浏览器前进后退或者切换导航触发
+    //savePosition：记录滚动条的坐标 点击浏览器前进后退触发
+    if(savePosition){
+      return savePosition
+    }else {
+      return {x:0,y:0}
+    }
+  },
+  routes: [
+    {
+      path: '/',
+      component: Home
+    },
+    {
+      path: '/goods',
+      component: Goods
+    },
+    {
+      path: '/searchList',
+      component: searchList
+    },
+    {
+      path: '/goodsDetail/:id',
+      component: goodsDetail
+    },
+    {
+      path: '/search',
+      component: search
+    },
+    {
+      path: '/indulgence',
+      component: indulgence
+    },
+    {
+      path: '/vip',
+      component: vip
+    },
+    {
+      path: '/house',
+      component: house
+    },
+    {
+      path: '/old',
+      component: old
+    },
+    {
+      path:'/world',
+      component: world
+    }
+  ]
+})

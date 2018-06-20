@@ -1,0 +1,10 @@
+$fix-top:0.76rem;
+$fix-padding:0.28rem;
+$font-size-s:0.18rem;
+$font-size-m:0.24rem;
+$font-size-l:0.3rem;
+$font-size-ml:0.28rem;
+$font-size-ss:0.14rem;
+$font-size-ll:0.46rem;
+$color-red:#ed2222;
+$color-header:#140c41;

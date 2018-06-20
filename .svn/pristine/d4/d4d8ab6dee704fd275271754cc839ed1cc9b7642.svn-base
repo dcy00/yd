@@ -1,0 +1,29 @@
+<template>
+  <div id="app">
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
+  </div>
+</template>
+
+<script>
+  import {mapMutations} from 'vuex';
+  import {getCarNum} from '@/api/go-android';
+  export default {
+    name: 'app',
+    created(){
+        window.setCartNumber = this.setCartNumber;
+        let num = getCarNum();
+      this.setCartNumber(num);
+    },
+    methods:{
+      ...mapMutations({
+        setCartNumber: 'SetCartNumber'
+      })
+    }
+  }
+</script>
+
+<style>
+
+</style>
