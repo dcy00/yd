@@ -11,7 +11,10 @@
             <div class="right-wrapper">
               <p class="name">{{item.title}}</p>
               <div class="vip" v-if="item.entityCardMoneyLimit"><label>VIP卡</label><span>满{{item.entityCardMoneyLimit | myPrice}}减{{item.entityCardMoney | myPrice}}</span></div>
-              <p class="price"> {{item.minPrice | myPrice}}</p>
+              <div class="pAndcart">
+                <p class="price"> {{item.minPrice | myPrice}}</p>
+                <p class="go-cart"><img src="../../assets/img/cartred.png" alt="">加入购物车</p>
+              </div>
             </div>
           </div>
           <arrow-pagination v-if="pageCount>0" @prev="clickPrev" @next="clickNext" :hasPrev="currentPage > 1"
@@ -61,6 +64,7 @@
         if (res.status === 'success') {
           this.pageCount = res.page?res.page.pageCount:0;
           if (this.pageCount > 0) {
+              console.dir(res.data);
             this.initData = this.initData.concat(res.data);
             this.setSearchList();
           }
@@ -100,6 +104,43 @@
     left: 0.7rem;
     position: absolute;
     top: 1.3rem;
+  }
+  .pAndcart{
+    margin-top: 0.2rem;
+    line-height:0.48rem;
+    .go-cart{
+      float: right;
+      line-height:0.48rem;
+      font-size:0.38rem;
+      padding: 0.2rem 0.2rem 0 0;
+      color:rgba(51,51,51,1);
+      font-family:PingFangSC-Regular;
+      img{
+        height:0.4rem;
+        vertical-align: middle;
+      }
+    }
+    .price{
+      display: inline-block;
+      width:30%;
+      height:0.48rem;
+      font-size:0.48rem;
+      font-family:PingFangSC-Regular;
+      color:rgba(238,61,32,1);
+      line-height:0.48rem;
+      /*margin-top: 0.5rem;*/
+      position: relative;
+      box-sizing: content-box;
+      padding-left: 0.25rem;
+      &:before{
+        position: absolute;
+        left: 0;
+        content: "¥";
+        font-size: 0.3rem;
+        line-height: 0.3rem;
+        bottom: 0.03rem;
+      }
+    }
   }
   .vip-wrapper {
     padding-top: 0.01rem;
@@ -169,24 +210,6 @@
             font-family:PingFangSC-Regular;
             color:rgba(51,51,51,1);
             line-height:0.24rem;
-          }
-        }
-        .price{
-          height:0.48rem;
-          font-size:0.48rem;
-          font-family:PingFangSC-Regular;
-          color:rgba(238,61,32,1);
-          line-height:0.48rem;
-          margin-top: 0.5rem;
-          position: relative;
-          padding-left: 0.25rem;
-          &:before{
-            position: absolute;
-            left: 0;
-            content: "¥";
-            font-size: 0.3rem;
-            line-height: 0.3rem;
-            bottom: 0.03rem;
           }
         }
       }

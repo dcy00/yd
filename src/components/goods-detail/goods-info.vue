@@ -22,7 +22,15 @@
       <div class="right">
         <div class="goods-msg">
           <p class="name">{{goodsInfo.title}}</p>
-          <div class="goods-item goods-name">通用名称 : {{goodsInfo.recommendSpeech}}</div>
+          <div class="goods-item second-wrapper "  v-if="goodsInfo.goodsType === 2 || goodsInfo.goodsType ===3">
+            <span class="item-title" style="width: auto;text-align: left;">距离活动结束仅剩：</span>
+            <count-down
+              :startTime="goodsInfo.systemTime"
+              :endTime="goodsInfo.endTime"
+              :isTime="false"
+              :isBlack="false"></count-down>
+          </div>
+          <div class="goods-item goods-name" v-if="goodsInfo.goodsType === 1">通用名称 : {{goodsInfo.recommendSpeech || '暂无'}}</div>
           <!-- <div class="goods-item">品牌：佐力</div>-->
           <div class="goods-item price">
             <span class="item-title">价格：</span>
@@ -51,21 +59,18 @@
               </div>
             </div>
           </div>
-          <div class="goods-item second-wrapper"  v-if="goodsInfo.goodsType === 2 || goodsInfo.goodsType === 3">
-            <span class="item-title" style="width: auto;text-align: left;margin-left: -0.6rem;">距离活动结束仅剩：</span>
-            <count-down
-                        :startTime="goodsInfo.systemTime"
-                        :endTime="goodsInfo.endTime"
-                        :isTime="false"
-                        :isBlack="false"></count-down>
-          </div>
+
           <div class="goods-item number-wrapper">
             <span class="title item-title">数量：</span>
             <div class="cart-control-wrapper">
               <cart-control v-bind:max="stock" v-on:changenumber="changeNumber"></cart-control>
             </div>
-            <span class="stock topIn" v-if="goodsInfo.goodsType===1">已售：{{goodsInfo.salesVolume}}件</span>
-            <span class="stock topDown">剩余库存：{{stock}}</span>
+            <div class="cart-right">
+            <div v-if="goodsInfo.goodsType===1 || goodsInfo.goodsType===2" class="top">已售：{{goodsInfo.salesVolume}}件</div>
+            <div class="down">剩余库存：{{stock}}</div>
+            </div>
+            <!--<span class="stock topIn" ></span>-->
+            <!--<span class="stock topDown"></span>-->
           </div>
           <div class="button-wrapper " v-if="goodsInfo.state === 2">
             <a class="cart-button">商品已下架</a>
@@ -81,11 +86,11 @@
             <ul class="sell-info clearfix">
               <li>
                 <span class="icon iconfont icon-check"></span>
-                <span class="sell-info-text">正品保障</span>
+                <span class="sell-info-text">99元包邮</span>
               </li>
               <li>
                 <span class="icon iconfont icon-check"></span>
-                <span class="sell-info-text">99元包邮</span>
+                <span class="sell-info-text">正品保障</span>
               </li>
               <li>
                 <span class="icon iconfont icon-check"></span>
@@ -98,11 +103,11 @@
             <ul class="sell-info clearfix">
               <li>
                 <span class="icon iconfont icon-check"></span>
-                <span class="sell-info-text">正品保障</span>
+                <span class="sell-info-text">99元包邮</span>
               </li>
               <li>
                 <span class="icon iconfont icon-check"></span>
-                <span class="sell-info-text">99元包邮</span>
+                <span class="sell-info-text">正品保障</span>
               </li>
               <li>
                 <span class="icon iconfont icon-check"></span>
@@ -110,7 +115,7 @@
               </li>
             </ul>
           </template>
-          <p class="sell-rule">药品一经出库无质量问题不接受退换，敬请悉知！</p>
+          <p class="sell-rule">温馨提示 : 药品一经出库无质量问题不接受退换，敬请悉知！</p>
         </div>
       </div>
     </div>
@@ -266,6 +271,14 @@
 <style scoped lang="scss">
   @import "~@/common/scss/variable.scss";
   @import "~@/common/scss/mixin.scss";
+  .cart-right{
+    margin-left: 0.15rem;
+    color: #656565;
+    .top,.down{
+      font-size: 0.14rem;
+      line-height: 0.25rem;
+    }
+  }
 
   .item-title {
     display: inline-block;
@@ -432,7 +445,7 @@
           }
         }
         .sell-info {
-          margin-left: 1rem;
+          /*margin-left: 1rem;*/
           font-size: 0;
           li {
             float: left;
@@ -453,7 +466,7 @@
           color: #989898;
           font-size: $font-size-ss;
           margin-top: 0.26rem;
-          margin-left: 1rem;
+          /*margin-left: 1rem;*/
         }
       }
     }

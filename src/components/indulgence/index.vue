@@ -77,14 +77,14 @@
             let seckillTime;
             this.periodsId = d.id;
             if (d.state === 4) {
-              this.startendTitle = "距结束";
+              this.startendTitle = "距离结束";
               seckillTime = {
                 endTime: d.endTime,
                 startTime: d.startTime,
                 nowSystemTime: d.nowSystemTime
               };
             } else if (d.state === 3) {
-              this.startendTitle = "距开始";
+              this.startendTitle = "距离开始";
               seckillTime = {
                 endTime: d.startTime,
                 nowSystemTime: d.nowSystemTime

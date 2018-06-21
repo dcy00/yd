@@ -39,7 +39,7 @@
     height:40px;
     background-color: #fff;
     border-radius: 50%;
-    top: 50%;
+    top: 45%;
     display: flex;
     justify-content:center;
     align-items:center;
