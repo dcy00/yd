@@ -7,7 +7,11 @@ import router from './router';
 import store from './store';
 import VueLazyLoad from 'vue-lazyload'
 import '@/common/scss/app.scss';
-import 'mint-ui/lib/style.css'
+import 'mint-ui/lib/style.css';
+
+var VueTouch = require('vue-touch')
+Vue.use(VueTouch, {name: 'v-touch'})
+
 /*import { sync } from 'vuex-router-sync'*/
 Vue.config.productionTip = false;
 /*sync(store, router)*/

@@ -28,6 +28,7 @@
 <script type="text/ecmascript-6">
   import TextSplit from '@/base/text-split';
   import arrowPagination from '@/base/arrow-pagination';
+  import {showTips} from '@/api/go-android';
   import Pagination from '@/base/pagination';
   import {mapActions} from 'vuex';
   export default {
@@ -56,6 +57,8 @@
       clickPrev(){
         if (this.pageIndex > 1) {
           this.$emit('pagination', -1);
+        }else{
+          showTips();
         }
       },
       changeArray(item){

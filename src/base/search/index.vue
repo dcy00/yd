@@ -13,6 +13,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {saveSearch} from '@/api/go-android';
   export default {
     props: {
       shadow: {
@@ -36,7 +37,7 @@
     activated(){
       //this.words = this.keywords;
       if(!this.jump) {
-          this.$refs.input.focus();
+//          this.$refs.input.focus();
           this.words = ''
       }
     },
@@ -48,9 +49,8 @@
       },
       clickSubmit(){
           if(!this.jump && this.words.trim() !== ''){
-//          this.$emit('onsearch',this.words.trim());
-            this.$store.commit('AddSearchHistory',this.words.trim());
-            this.$store.commit('AddSearchHistoryToLS')
+          saveSearch(this.words.trim());
+          this.$emit('onsearch',this.words.trim());
         }
       }
     },

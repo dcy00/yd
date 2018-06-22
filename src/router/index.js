@@ -54,6 +54,7 @@ const search = () => import('@/components/search');
 //限时秒杀页
 const indulgence = () => import('@/components/indulgence');
 export default new Router({
+  mode: 'history',
   scrollBehavior(to,from,savePosition){
     //to：记录目标 点击浏览器前进后退或者切换导航触发
     //from:记录来源 点击浏览器前进后退或者切换导航触发
@@ -67,43 +68,73 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Home
+      component: Home,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     },
     {
       path: '/goods',
-      component: Goods
+      component: Goods,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     },
     {
       path: '/searchList',
-      component: searchList
+      component: searchList,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     },
     {
       path: '/goodsDetail/:id',
-      component: goodsDetail
+      component: goodsDetail,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     },
     {
       path: '/search',
-      component: search
+      component: search,
+      meta: {
+        keepAlive: false // 需要被缓存
+      }
     },
     {
       path: '/indulgence',
-      component: indulgence
+      component: indulgence,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     },
     {
       path: '/vip',
-      component: vip
+      component: vip,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     },
     {
       path: '/house',
-      component: house
+      component: house,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     },
     {
       path: '/old',
-      component: old
+      component: old,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     },
     {
       path:'/world',
-      component: world
+      component: world,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     }
   ]
 })

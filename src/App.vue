@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <keep-alive>
-      <router-view/>
+      <router-view v-if="$route.meta.keepAlive" />
     </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive" />
   </div>
 </template>
 
@@ -21,7 +22,7 @@
     created(){
         window.setCartNumber = this.setCartNumber;
         let num = getCarNum();
-      this.setCartNumber(num);
+        this.setCartNumber(num);
     },
     methods:{
       ...mapMutations({

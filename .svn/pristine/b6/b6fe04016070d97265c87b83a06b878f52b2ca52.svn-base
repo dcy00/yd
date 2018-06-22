@@ -57,7 +57,3 @@ export function getSearchHistory(){
 export function saveSearch(keywords){
   window.hd&&window.hd.saveSearch(keywords);
 }
-//上翻至第一页显示提示信息
-export function showTips(){
-  window.hd&&window.hd.toastFirst();
-}

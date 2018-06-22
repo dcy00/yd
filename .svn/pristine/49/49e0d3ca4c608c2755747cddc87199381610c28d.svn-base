@@ -42,8 +42,7 @@
       }
     },
     created(){
-
-      window.getHistoryList=this.getHistoryList;  //与android的通过window联系
+      window.getHistoryList=this.getHistoryList;
       this._getSearchHot();
       this._getSearchHis();
     },
@@ -66,11 +65,9 @@
           getSearchHistory();
       },
       onSearch(keywords) {
-         saveSearch(keywords);
-         this.$router.replace({path: 'searchList',query: {keywords: keywords}});
-//         this.$destroy();
-      }
-    },
+         this.$router.replace({path: 'searchList',query: {keywords: keywords}})
+      },
+    }
   }
 </script>
 

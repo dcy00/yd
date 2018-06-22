@@ -82,29 +82,6 @@ export function goTop() {//回到顶部
 
 };
 
-export const arrString={
-  toArr(str){          //以,链接的字符串变数组
-    if(str.length==0){
-      return [];
-    }else if(str.indexOf(',') != -1){
-      return str.split(",");
-    }else{
-      var arr=[];
-      arr[0]=str;
-      return arr;
-    }
+export function showTips(){ //显示提示信息
 
-  },
-  toStr(arr){           //将数组各元素以,链接
-    if(arr==[]){
-      return '';
-    }else if(arr.length==1){
-      return arr[0];
-    }else{
-      return arr.join(",");
-    }
-  },
-  isRepeat(str,arr){        //判断元素是否在数组中
-    return arr.indexOf(str);    //未找到则返回 -1。>-1则包含
-  }
 }
