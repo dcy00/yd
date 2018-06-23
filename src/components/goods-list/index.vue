@@ -1,6 +1,7 @@
 <template>
   <div class="goods-list-wrapper">
     <div class="container-wrapper">
+      <v-touch v-on:swipeleft="clickNext" v-on:swiperight="clickPrev">
       <div class="goods-wrapper">
         <router-link :to="'/goodsDetail/'+item.id" class="goods-list" v-for="(item, index) in dataList" :key="index">
           <div class="img-wrapper">
@@ -18,9 +19,11 @@
            </div>-->
         </router-link>
       </div>
+      </v-touch>
       <arrow-pagination @prev="clickPrev" @next="clickNext" :hasPrev="pageIndex > 1"
                         :hasNext="pageIndex < pageCount"></arrow-pagination>
     </div>
+
     <pagination :currentPage="pageIndex" :allPage="pageCount"></pagination>
   </div>
 </template>

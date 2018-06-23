@@ -2,6 +2,7 @@
   <div class="container">
     <header-hd :simple="true" :isIndex="false"></header-hd>
     <img src="./vip.png" class="title-img"/>
+    <v-touch v-on:swipeleft="clickNext" v-on:swiperight="clickPrev">
     <div class="vip-wrapper container-middle">
         <div  v-if="initData.length>0" class="arrow-wrapper">
           <div class="goods-item clearfix" v-for="item in searchList"  @click="goToDetail(item.id)">
@@ -22,6 +23,7 @@
         </div>
 
     </div>
+    </v-touch>
     <pagination :currentPage="currentPage" :allPage="pageCount"></pagination>
   </div>
 </template>
@@ -116,7 +118,7 @@
       color:rgba(51,51,51,1);
       font-family:PingFangSC-Regular;
       img{
-        height:0.4rem;
+        height:0.39rem;
         vertical-align: middle;
       }
     }

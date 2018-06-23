@@ -2,6 +2,7 @@
   <div class="container">
     <header-hd :simple="true" :isIndex="false"></header-hd>
     <h2 class="title-img">老年专区</h2>
+    <v-touch v-on:swipeleft="clickNext" v-on:swiperight="clickPrev">
     <div class="vip-wrapper container-middle">
         <div class="arrow-wrapper">
           <div class="goods-item clearfix" v-for="item in searchList"  @click="goToDetail(item.id)">
@@ -20,6 +21,7 @@
                             :hasNext="currentPage < pageCount"></arrow-pagination>
         </div>
     </div>
+    </v-touch>
     <pagination :currentPage="currentPage" :allPage="pageCount"></pagination>
   </div>
 </template>
